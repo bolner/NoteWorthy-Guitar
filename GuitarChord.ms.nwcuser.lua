@@ -253,7 +253,7 @@ local _spec = {
 	{ id='Span', label='Note Span', type='int', default=0, min=0 },
 	{ id='FretTextPosition', label='Fret Text Location', type='enum', default='top', list=fretTextPos },
 	{ id='Strum', label='Strum Direction', type='enum', default='down', list=strumStyles, separator='' },
-	{ id='TopBarreOffset', label='Top Barre Offset', type='float', default=0, min=0, step=.25 },
+	{ id='TopBarreOffset', label='Top Barre Offset', type='float', default=0, min=-1, step=.25 },
 	{ id='Anticipated', label='Anticipated Playback', type='bool', default=true },
 }
 
@@ -533,9 +533,17 @@ local function _draw(t)
 				end
 			end
 		else
-			nwcdraw.moveTo(x, height2 + yspace * .25)
-			nwcdraw.setFont(fingeringFontFace, fingeringFontSize)
-			nwcdraw.text(f)
+			if f == 'x' then
+				local y = yspace*(frets + topFret - 1.5)
+				local yHalf = yspace*0.3
+				nwcdraw.setPen(penStyle, lineThickness)
+				nwcdraw.line(x - dotXSize, y - yHalf, x + dotXSize, y + yHalf)
+				nwcdraw.line(x + dotXSize, y - yHalf, x - dotXSize, y + yHalf)
+			else
+				nwcdraw.moveTo(x, height2 + yspace * .25)
+				nwcdraw.setFont(fingeringFontFace, fingeringFontSize)
+				nwcdraw.text(f)
+			end
 		end
 		stringNum = stringNum + 1
 		x = x+xspace

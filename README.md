@@ -3,6 +3,11 @@ NoteWorthy Composer - Guitar Chords plugin
 
 The [GuitarChord plugin](https://forum.noteworthycomposer.com/?topic=9081.0) for [NoteWorthy Composer](https://noteworthycomposer.com) was created by Mike Shawaluk in 2015. I created this repository for keeping track of some changes I needed.
 
+# My changes
+
+- Allow the value `-1` for `Top Barre Offset`.
+- Display the mute sign `x` on the string itself by drawing it, and not as text above the top fret.
+
 # Original documentation
 
 This plugin draw a guitar chord chart and optionally strums the chord when the song is played. A variety of notation is shown, including the chord name, open and excluded strings, barre positions, fret position and optional finger numbers.
